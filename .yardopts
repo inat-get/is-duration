@@ -1,0 +1,6 @@
+--title IS::Duration
+--readme README.md
+--protected
+--private
+--no-private
+lib/**/*.rb
