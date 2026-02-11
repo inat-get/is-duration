@@ -142,43 +142,37 @@ module IS::Duration
         Unit::ns => nanoseconds
       }
       units_array = units.to_a.reverse
+      fmt2 = case zeros
+      when OnZero::fill
+        '%02d'
+      when OnZero::align
+        '%2d'
+      else
+        '%d'
+      end
+      fmt3 = case zeros
+      when OnZero::fill
+        '%03d'
+      when OnZero::align
+        '%2d'
+      else
+        '%d'
+      end
       result = []
       started = false
       units_array.each do |u|
-        case u
+        value = map[u]
+        next if value == 0 && (empty == OnEmpty::skip || (empty == OnEmpty::minor && !started))
+        started = true
+        item = case u
         when Unit::from(:s .. :h)
-          value = map[u]
-          next if value == 0 && (empty == OnEmpty::skip || (empty == OnEmpty::minor && !started))
-          started = true
-          item = case zeros
-          when OnZero::fill
-            Kernel::format '%02d', value
-          when OnZero::align
-            Kernel::format '%2d', value
-          else
-            Kernel::format '%d', value
-         end
-         result << item + u.to_s
+          Kernel::format fmt2, value
         when Unit::from(:ns .. :ms)
-          value = map[u]
-          next if value == 0 && (empty == OnEmpty::skip || (empty == OnEmpty::minor && !started))
-          started = true
-          item = case zeros
-          when OnZero::fill
-            Kernel::format '%03d', value
-          when OnZero::align
-            Kernel::format '%3d', value
-          else
-            Kernel::format '%d', value
-          end
-          result << item + u.to_s
+          Kernel::format fmt3, value
         else
-          value = map[u]
-          next if value == 0 && (empty == OnEmpty::skip || (empty == OnEmpty::minor && !started))
-          started = true
-          item = Kernel::format '%d', value
-          result << item + u.to_s
+          Kernel::format '%d', value
         end
+        result << item + u.to_s
       end
       result = result.join(delim).strip
       if sgn < 0
