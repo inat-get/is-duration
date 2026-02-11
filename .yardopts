@@ -1,5 +1,6 @@
 --title IS::Duration
 --readme README.md
+--asset coverage-badge.svg
 --protected
 --private
 --no-private

@@ -10,7 +10,7 @@ Gem::Specification::new do |spec|
   spec.license  =   IS::Duration::Info::LICENSE
   spec.homepage =   IS::Duration::Info::HOMEPAGE
 
-  spec.files = Dir[ 'lib/**/*.rb', 'README.md', 'LICENSE' ]
+  spec.files = Dir[ 'lib/**/*.rb', 'README.md', 'LICENSE', 'coverage-badge.svg' ]
 
   spec.required_ruby_version = '>= 3.4'
 
