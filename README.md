@@ -102,11 +102,11 @@ IS::Duration.format(3661)         # => "1h1m1s" (default: seconds to days)
 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
-| `units` | `Range<Unit\|Symbol>` | `(:s..:d)` | Unit range to display |
-| `empty` | `OnEmpty\|Symbol` | `:skip` | How to handle zero values |
-| `zeros` | `OnZero\|Symbol` | `:single` | Zero-padding style |
+| `units` | `Range<Unit` or `Symbol>` | `(:s..:d)` | Unit range to display |
+| `empty` | `OnEmpty` or `Symbol` | `:skip` | How to handle zero values |
+| `zeros` | `OnZero` or `Symbol` | `:single` | Zero-padding style |
 | `delim` | `String` | `""` | Delimiter between components |
-| `minus` | `OnMinus\|String\|Proc` | `:ignore` | Negative value handling |
+| `minus` | `OnMinus`, `String` or `Proc` | `:ignore` | Negative value handling |
 
 ### Empty Value Handling (`empty`)
 
