@@ -163,16 +163,20 @@ module IS::Duration
       units_array.each do |u|
         value = map[u]
         next if value == 0 && (empty == OnEmpty::skip || (empty == OnEmpty::minor && !started))
+        first = true if !started
         started = true
-        item = case u
-        when Unit::from(:s .. :h)
-          Kernel::format fmt2, value
-        when Unit::from(:ns .. :ms)
-          Kernel::format fmt3, value
+        fmt = if first 
+          '%d'
+        elsif Unit::from(:s..:h) === u
+          fmt2
+        elsif Unit::from(:ns..:ms) === u
+          fmt3
         else
-          Kernel::format '%d', value
+          '%d'
         end
+        item = Kernel::format fmt, value
         result << item + u.to_s
+        first = false
       end
       result = result.join(delim).strip
       if sgn < 0

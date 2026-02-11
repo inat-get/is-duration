@@ -20,7 +20,7 @@ RSpec::describe IS::Duration do
     expect(IS::Duration::format 1000, delim: ' ').to eq('16m 40s')
     expect(IS::Duration::format 1000000).to eq('11d13h46m40s')
     expect(IS::Duration::format 1000000, units: (:s .. :w)).to eq('1w4d13h46m40s')
-    expect(IS::Duration::format 1, units: (:ms .. :s), empty: :minor, zeros: :fill).to eq('01s000ms')
+    expect(IS::Duration::format 1, units: (:ms .. :s), empty: :minor, zeros: :fill).to eq('1s000ms')
     expect(IS::Duration::format 1, units: (:ns..:ns)).to eq("1000000000ns")
     expect(IS::Duration::format -5555, minus: lambda { |v| "{#{v}}" }).to eq('{1h32m35s}')
     expect(IS::Duration::format -5555, minus: '-').to eq('-1h32m35s')
