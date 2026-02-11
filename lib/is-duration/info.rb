@@ -7,7 +7,7 @@ end
 # @private
 module IS::Duration::Info
   NAME     = 'is-duration'
-  VERSION  = '0.8.2'
+  VERSION  = '0.8.4'
   SUMMARY  = 'Utilities for string representation of durations'
   AUTHOR   = 'Ivan Shikhalev'
   LICENSE  = 'LGPL-3.0-only'
