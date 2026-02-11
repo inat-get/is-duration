@@ -154,7 +154,7 @@ module IS::Duration
       when OnZero::fill
         '%03d'
       when OnZero::align
-        '%2d'
+        '%3d'
       else
         '%d'
       end
