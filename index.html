@@ -59,11 +59,308 @@
 
       <div id="content"><div id='filecontents'><h1 id="is-duration">is-duration</h1>
 
-<p>Utilities for string representation of durations</p>
+<p><a href="LICENSE"><img src="https://img.shields.io/github/license/inat-get/is-duration" alt="GitHub License"></a>
+<a href="https://badge.fury.io/rb/is-duration"><img src="https://badge.fury.io/rb/is-duration.svg?icon=si%3Arubygems" alt="Gem Version"></a>
+<a href="https://github.com/inat-get/is-duration/actions/workflows/ruby.yml"><img src="https://github.com/inat-get/is-duration/actions/workflows/ruby.yml/badge.svg" alt="Ruby"></a> 
+<img src="coverage-badge.svg" alt="Coverage"></p>
+
+<p>A Ruby library for parsing and formatting duration strings with nanosecond precision. Provides a clean API for converting between numeric durations and human-readable string representations like <code>&quot;1h30m15s&quot;</code> or <code>&quot;2d12h&quot;</code>.</p>
+
+<h2 id="features">Features</h2>
+
+<ul>
+<li><strong>Bidirectional conversion</strong>: Parse strings to seconds, format seconds to strings</li>
+<li><strong>Nanosecond precision</strong>: Full support for milliseconds, microseconds, and nanoseconds</li>
+<li><strong>Flexible formatting</strong>: Configurable units, delimiters, zero-padding, and negative value handling</li>
+<li><strong>Type safety</strong>: Built on <code>is-enum</code> for robust option handling</li>
+<li><strong>Zero dependencies</strong>: Only requires <code>is-enum</code> runtime dependency</li>
+<li><strong>Ruby 3.4+</strong>: Leverages modern Ruby features</li>
+</ul>
+
+<h2 id="installation">Installation</h2>
+
+<p>Add to your Gemfile:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>is-duration</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>~&gt; 0.8</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<p>Or install directly:</p>
+
+<pre class="code bash"><code class="bash">gem install is-duration
+</code></pre>
+
+<h2 id="quick-start">Quick Start</h2>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>is-duration</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='comment'># Parse duration strings
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_parse'><span class='object_link'><a href="IS/Duration.html#parse-class_method" title="IS::Duration.parse (method)">parse</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1h30m</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>        <span class='comment'># =&gt; 5400
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_parse'><span class='object_link'><a href="IS/Duration.html#parse-class_method" title="IS::Duration.parse (method)">parse</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1d12h30m</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>     <span class='comment'># =&gt; 131400
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_parse'><span class='object_link'><a href="IS/Duration.html#parse-class_method" title="IS::Duration.parse (method)">parse</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>500ms</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>        <span class='comment'># =&gt; 0.5
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_parse'><span class='object_link'><a href="IS/Duration.html#parse-class_method" title="IS::Duration.parse (method)">parse</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1s500ms</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>      <span class='comment'># =&gt; 1.5
+</span>
+<span class='comment'># Format durations
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='int'>5400</span><span class='rparen'>)</span>           <span class='comment'># =&gt; &quot;1h30m&quot;
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='int'>90061</span><span class='rparen'>)</span>          <span class='comment'># =&gt; &quot;1d1h1m1s&quot;
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='float'>1.5</span><span class='rparen'>)</span>            <span class='comment'># =&gt; &quot;1s500ms&quot;
+</span>
+<span class='comment'># With custom options
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='int'>1000</span><span class='comma'>,</span> <span class='label'>delim:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>                    <span class='comment'># =&gt; &quot;16m 40s&quot;
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='int'>1</span><span class='comma'>,</span> <span class='label'>units:</span> <span class='lparen'>(</span><span class='symbol'>:ms</span><span class='op'>..</span><span class='symbol'>:s</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>zeros:</span> <span class='symbol'>:fill</span><span class='rparen'>)</span>  <span class='comment'># =&gt; &quot;01s000ms&quot;
+</span></code></pre>
+
+<h2 id="supported-units">Supported Units</h2>
+
+<table><thead>
+<tr>
+<th>Symbol</th>
+<th>Name</th>
+<th>Seconds Equivalent</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>w</code></td>
+<td>weeks</td>
+<td>604,800</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td>days</td>
+<td>86,400</td>
+</tr>
+<tr>
+<td><code>h</code></td>
+<td>hours</td>
+<td>3,600</td>
+</tr>
+<tr>
+<td><code>m</code></td>
+<td>minutes</td>
+<td>60</td>
+</tr>
+<tr>
+<td><code>s</code></td>
+<td>seconds</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>ms</code></td>
+<td>milliseconds</td>
+<td>0.001</td>
+</tr>
+<tr>
+<td><code>us</code></td>
+<td>microseconds</td>
+<td>0.000001</td>
+</tr>
+<tr>
+<td><code>ns</code></td>
+<td>nanoseconds</td>
+<td>0.000000001</td>
+</tr>
+</tbody></table>
+
+<h2 id="parsing">Parsing</h2>
+
+<p>The <code>parse</code> method accepts various input types:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># From strings
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_parse'><span class='object_link'><a href="IS/Duration.html#parse-class_method" title="IS::Duration.parse (method)">parse</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>2h30m</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>         <span class='comment'># Integer: 9000
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_parse'><span class='object_link'><a href="IS/Duration.html#parse-class_method" title="IS::Duration.parse (method)">parse</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1.5</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>           <span class='comment'># Float: 1.5
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_parse'><span class='object_link'><a href="IS/Duration.html#parse-class_method" title="IS::Duration.parse (method)">parse</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>500ms</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>         <span class='comment'># Float: 0.5
+</span>
+<span class='comment'># From numbers (pass-through)
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_parse'><span class='object_link'><a href="IS/Duration.html#parse-class_method" title="IS::Duration.parse (method)">parse</a></span></span><span class='lparen'>(</span><span class='int'>3600</span><span class='rparen'>)</span>            <span class='comment'># Integer: 3600
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_parse'><span class='object_link'><a href="IS/Duration.html#parse-class_method" title="IS::Duration.parse (method)">parse</a></span></span><span class='lparen'>(</span><span class='float'>1.5</span><span class='rparen'>)</span>             <span class='comment'># Float: 1.5
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_parse'><span class='object_link'><a href="IS/Duration.html#parse-class_method" title="IS::Duration.parse (method)">parse</a></span></span><span class='lparen'>(</span><span class='int'>1</span><span class='op'>/</span><span class='rational'>2r</span><span class='rparen'>)</span>            <span class='comment'># Rational → Float: 0.5
+</span>
+<span class='comment'># Nil handling
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_parse'><span class='object_link'><a href="IS/Duration.html#parse-class_method" title="IS::Duration.parse (method)">parse</a></span></span><span class='lparen'>(</span><span class='kw'>nil</span><span class='rparen'>)</span>             <span class='comment'># nil
+</span>
+<span class='comment'># Invalid input raises ArgumentError
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_parse'><span class='object_link'><a href="IS/Duration.html#parse-class_method" title="IS::Duration.parse (method)">parse</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>invalid</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>       <span class='comment'># raises ArgumentError
+</span></code></pre>
+
+<p><strong>String format</strong>: One or more <code>&lt;number&gt;&lt;unit&gt;</code> pairs separated by whitespace. Units must be in descending order of magnitude (e.g., <code>1h30m</code> valid, <code>30m1h</code> invalid).</p>
+
+<h2 id="formatting">Formatting</h2>
+
+<p>The <code>format</code> method converts numeric durations to strings with extensive customization:</p>
+
+<h3 id="basic-usage">Basic Usage</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='int'>3661</span><span class='rparen'>)</span>         <span class='comment'># =&gt; &quot;1h1m1s&quot; (default: seconds to days)
+</span></code></pre>
+
+<h3 id="options">Options</h3>
+
+<table><thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>units</code></td>
+<td>`Range&lt;Unit\</td>
+<td>Symbol&gt;`</td>
+<td><code>(:s..:d)</code></td>
+</tr>
+<tr>
+<td><code>empty</code></td>
+<td>`OnEmpty\</td>
+<td>Symbol`</td>
+<td><code>:skip</code></td>
+</tr>
+<tr>
+<td><code>zeros</code></td>
+<td>`OnZero\</td>
+<td>Symbol`</td>
+<td><code>:single</code></td>
+</tr>
+<tr>
+<td><code>delim</code></td>
+<td><code>String</code></td>
+<td><code>&quot;&quot;</code></td>
+<td>Delimiter between components</td>
+</tr>
+<tr>
+<td><code>minus</code></td>
+<td>`OnMinus\</td>
+<td>String\</td>
+<td>Proc`</td>
+</tr>
+</tbody></table>
+
+<h3 id="empty-value-handling-empty">Empty Value Handling (<code>empty</code>)</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># :skip (default) — omit zero values
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='int'>3600</span><span class='comma'>,</span> <span class='label'>empty:</span> <span class='symbol'>:skip</span><span class='rparen'>)</span>      <span class='comment'># =&gt; &quot;1h&quot;
+</span>
+<span class='comment'># :minor — skip leading (major) zero values, show trailing zeros
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='int'>3600</span><span class='comma'>,</span> <span class='label'>units:</span> <span class='lparen'>(</span><span class='symbol'>:m</span><span class='op'>..</span><span class='symbol'>:h</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>empty:</span> <span class='symbol'>:minor</span><span class='rparen'>)</span>  <span class='comment'># =&gt; &quot;1h0m&quot;
+</span>
+<span class='comment'># :force — always show all units in range
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='int'>3600</span><span class='comma'>,</span> <span class='label'>units:</span> <span class='lparen'>(</span><span class='symbol'>:m</span><span class='op'>..</span><span class='symbol'>:h</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>empty:</span> <span class='symbol'>:force</span><span class='rparen'>)</span>  <span class='comment'># =&gt; &quot;0m1h0m&quot;
+</span></code></pre>
+
+<h3 id="zero-padding-zeros">Zero Padding (<code>zeros</code>)</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># :single (default) — no padding
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='int'>65</span><span class='comma'>,</span> <span class='label'>zeros:</span> <span class='symbol'>:single</span><span class='rparen'>)</span>      <span class='comment'># =&gt; &quot;1m5s&quot;
+</span>
+<span class='comment'># :fill — zero-pad to unit width (2 for s/m/h, 3 for ms/us/ns)
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='int'>65</span><span class='comma'>,</span> <span class='label'>zeros:</span> <span class='symbol'>:fill</span><span class='rparen'>)</span>        <span class='comment'># =&gt; &quot;01m05s&quot;
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='int'>1</span><span class='comma'>,</span> <span class='label'>units:</span> <span class='lparen'>(</span><span class='symbol'>:ms</span><span class='op'>..</span><span class='symbol'>:s</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>zeros:</span> <span class='symbol'>:fill</span><span class='rparen'>)</span>  <span class='comment'># =&gt; &quot;01s000ms&quot;
+</span>
+<span class='comment'># :align — space-pad to unit width
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='int'>65</span><span class='comma'>,</span> <span class='label'>zeros:</span> <span class='symbol'>:align</span><span class='rparen'>)</span>       <span class='comment'># =&gt; &quot; 1m 5s&quot;
+</span></code></pre>
+
+<h3 id="delimiters">Delimiters</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='int'>3661</span><span class='comma'>,</span> <span class='label'>delim:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>        <span class='comment'># =&gt; &quot;1h 1m 1s&quot;
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='int'>3661</span><span class='comma'>,</span> <span class='label'>delim:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>, </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>       <span class='comment'># =&gt; &quot;1h, 1m, 1s&quot;
+</span></code></pre>
+
+<h3 id="negative-values-minus">Negative Values (<code>minus</code>)</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># :ignore (default) — format absolute value
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='op'>-</span><span class='int'>3600</span><span class='comma'>,</span> <span class='label'>minus:</span> <span class='symbol'>:ignore</span><span class='rparen'>)</span>   <span class='comment'># =&gt; &quot;1h&quot;
+</span>
+<span class='comment'># :error — raise ArgumentError
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='op'>-</span><span class='int'>3600</span><span class='comma'>,</span> <span class='label'>minus:</span> <span class='symbol'>:error</span><span class='rparen'>)</span>    <span class='comment'># raises ArgumentError
+</span>
+<span class='comment'># String prefix — prepend with delimiter
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='op'>-</span><span class='int'>3600</span><span class='comma'>,</span> <span class='label'>minus:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>         <span class='comment'># =&gt; &quot;-1h&quot;
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='op'>-</span><span class='int'>3600</span><span class='comma'>,</span> <span class='label'>minus:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>minus</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>delim:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>  <span class='comment'># =&gt; &quot;minus 1h&quot;
+</span>
+<span class='comment'># Proc — custom transformation
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='op'>-</span><span class='int'>3600</span><span class='comma'>,</span> <span class='label'>minus:</span> <span class='tlambda'>-&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_s'>s</span><span class='rparen'>)</span> <span class='tlambeg'>{</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_s'>s</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='rparen'>)</span>  <span class='comment'># =&gt; &quot;(1h)&quot;
+</span></code></pre>
+
+<h3 id="unit-ranges">Unit Ranges</h3>
+
+<p>Control which units appear in output:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># Default: seconds to days
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='int'>90061</span><span class='rparen'>)</span>                   <span class='comment'># =&gt; &quot;1d1h1m1s&quot;
+</span>
+<span class='comment'># Extended: include weeks
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='int'>90061</span><span class='comma'>,</span> <span class='label'>units:</span> <span class='lparen'>(</span><span class='symbol'>:s</span><span class='op'>..</span><span class='symbol'>:w</span><span class='rparen'>)</span><span class='rparen'>)</span>  <span class='comment'># =&gt; &quot;1w4d1h1m1s&quot;
+</span>
+<span class='comment'># Subsecond only
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='float'>0.001</span><span class='comma'>,</span> <span class='label'>units:</span> <span class='lparen'>(</span><span class='symbol'>:ns</span><span class='op'>..</span><span class='symbol'>:ms</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='comment'># =&gt; &quot;1ms&quot;
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='int'>1</span><span class='comma'>,</span> <span class='label'>units:</span> <span class='lparen'>(</span><span class='symbol'>:ns</span><span class='op'>..</span><span class='symbol'>:ns</span><span class='rparen'>)</span><span class='rparen'>)</span>     <span class='comment'># =&gt; &quot;1000000000ns&quot;
+</span>
+<span class='comment'># Mixed ranges
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='float'>3661.5</span><span class='comma'>,</span> <span class='label'>units:</span> <span class='lparen'>(</span><span class='symbol'>:ms</span><span class='op'>..</span><span class='symbol'>:h</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='comment'># =&gt; &quot;1h1m1s500ms&quot;
+</span></code></pre>
+
+<h2 id="include-interface">Include Interface</h2>
+
+<p>For use within classes:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>MyClass</span>
+  <span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span>
+
+  <span class='kw'>def</span> <span class='id identifier rubyid_process_duration'>process_duration</span><span class='lparen'>(</span><span class='id identifier rubyid_input'>input</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_seconds'>seconds</span> <span class='op'>=</span> <span class='id identifier rubyid_parse_duration'>parse_duration</span><span class='lparen'>(</span><span class='id identifier rubyid_input'>input</span><span class='rparen'>)</span>  <span class='comment'># private method
+</span>    <span class='id identifier rubyid_format_duration'>format_duration</span><span class='lparen'>(</span><span class='id identifier rubyid_seconds'>seconds</span><span class='comma'>,</span> <span class='label'>delim:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_obj'>obj</span> <span class='op'>=</span> <span class='const'>MyClass</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_process_duration'>process_duration</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1h30m</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>  <span class='comment'># =&gt; &quot;1h 30m&quot;
+</span></code></pre>
+
+<p><strong>Note</strong>: <code>parse_duration</code> and <code>format_duration</code> are private methods, intended for internal use within the including class.</p>
+
+<h2 id="error-handling">Error Handling</h2>
+
+<p>All invalid inputs raise <code>ArgumentError</code> with descriptive messages:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_parse'><span class='object_link'><a href="IS/Duration.html#parse-class_method" title="IS::Duration.parse (method)">parse</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>abc</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>         <span class='comment'># ArgumentError: Invalid source value: &quot;abc&quot;
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_parse'><span class='object_link'><a href="IS/Duration.html#parse-class_method" title="IS::Duration.parse (method)">parse</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>30m1h</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>       <span class='comment'># ArgumentError: Invalid source value: &quot;30m1h&quot; (wrong order)
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='op'>-</span><span class='int'>1</span><span class='comma'>,</span> <span class='label'>minus:</span> <span class='symbol'>:error</span><span class='rparen'>)</span>  <span class='comment'># ArgumentError: Invalid source value: -1
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>string</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>     <span class='comment'># ArgumentError: Invalid source value: &quot;string&quot;
+</span></code></pre>
+
+<h2 id="type-safety-with-enums">Type Safety with Enums</h2>
+
+<p>The library uses <code>IS::Enum</code> for type-safe options:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># These are equivalent:
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='int'>100</span><span class='comma'>,</span> <span class='label'>empty:</span> <span class='symbol'>:skip</span><span class='rparen'>)</span>
+<span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="IS/Duration.html#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='int'>100</span><span class='comma'>,</span> <span class='label'>empty:</span> <span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration/OnEmpty.html" title="IS::Duration::OnEmpty (class)">OnEmpty</a></span></span><span class='period'>.</span><span class='id identifier rubyid_skip'>skip</span><span class='rparen'>)</span>
+
+<span class='comment'># Available enums:
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration/Unit.html" title="IS::Duration::Unit (class)">Unit</a></span></span>     <span class='comment'># ns, us, ms, s, m, h, d, w
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration/OnEmpty.html" title="IS::Duration::OnEmpty (class)">OnEmpty</a></span></span>  <span class='comment'># force, minor, skip
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration/OnZero.html" title="IS::Duration::OnZero (class)">OnZero</a></span></span>    <span class='comment'># fill, align, single
+</span><span class='const'><span class='object_link'><a href="IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration.html" title="IS::Duration (module)">Duration</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IS/Duration/OnMinus.html" title="IS::Duration::OnMinus (class)">OnMinus</a></span></span>   <span class='comment'># ignore, error
+</span></code></pre>
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+<li>Ruby &gt;= 3.4</li>
+<li>is-enum ~&gt; 0.8.8</li>
+</ul>
+
+<h2 id="license">License</h2>
+
+<p>LGPL-3.0-only. See <a href="LICENSE">LICENSE</a> for details.</p>
+
+<h2 id="contributing">Contributing</h2>
+
+<p>Bug reports and pull requests welcome at <a href="https://github.com/inat-get/is-duration">https://github.com/inat-get/is-duration</a>.</p>
 </div></div>
 
       <div id="footer">
-  Generated on Wed Feb 11 03:19:20 2026 by
+  Generated on Wed Feb 11 12:25:09 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.38 (ruby-3.4.8).
 </div>
