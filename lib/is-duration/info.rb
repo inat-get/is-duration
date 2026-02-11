@@ -6,10 +6,10 @@ end
 
 # @private
 module IS::Duration::Info
-  NAME = 'is-duration'
-  VERSION = '0.8.0'
-  SUMMARY = 'Utilities for string representation of durations'
-  AUTHOR = 'Ivan Shikhalev'
-  LICENSE = 'GPL-3.0-or-later'
+  NAME     = 'is-duration'
+  VERSION  = '0.8.2'
+  SUMMARY  = 'Utilities for string representation of durations'
+  AUTHOR   = 'Ivan Shikhalev'
+  LICENSE  = 'LGPL-3.0-only'
   HOMEPAGE = 'https://github.com/inat-get/is-duration'
 end
