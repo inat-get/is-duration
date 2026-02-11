@@ -48,7 +48,7 @@ IS::Duration.format(1.5)            # => "1s500ms"
 
 # With custom options
 IS::Duration.format(1000, delim: ' ')                    # => "16m 40s"
-IS::Duration.format(1, units: (:ms..:s), zeros: :fill)  # => "01s000ms"
+IS::Duration.format(1, units: (:ms..:s), zeros: :fill)  # => "1s000ms"
 ```
 
 ## Supported Units
