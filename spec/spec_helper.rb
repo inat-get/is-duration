@@ -6,3 +6,4 @@ RSpec.configure do |config|
   config.disable_monkey_patching!
 end
 
+require_relative '../lib/is-duration'

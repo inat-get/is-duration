@@ -87,7 +87,109 @@ module IS::Duration
       else
         raise ArgumentError, "Invalid option 'minus': #{ opts.minus }", caller_locations
       end
-      # TODO: implement
+      sgn = value <=> 0
+      raise ArgumentError, "Invalid source value: #{ value.inspect }", caller_locations if sgn < 0 && minus == OnMinus::error
+      abs = value.abs
+      int, frac = abs.divmod 1
+      weeks = days = hours = minutes = seconds = 0
+      if units.end > Unit::s && int > 60
+        min, seconds = int.divmod 60
+        if units.end > Unit::m && min > 60
+          hrs, minutes = min.divmod 60
+          if units.end > Unit::h && hrs > 24
+            dys, hours = hrs.divmod 24
+            if units.end > Unit::d && dys > 7
+              weeks, days = dys.divmod 7
+            else
+              days = dys
+            end
+          else
+            hours = hrs
+          end
+        else
+          minutes = min
+        end
+      else
+        seconds = int
+      end
+      nanoseconds = microseconds = milliseconds = 0
+      if units.begin < Unit::s
+        str_frac = Kernel::format('%.9f', frac)[-9..]
+        str_ms, str_us, str_ns = str_frac[0, 3], str_frac[3, 3], str_frac[6, 3]
+        milliseconds, microseconds, nanoseconds = str_ms.to_i, str_us.to_i, str_ns.to_i
+      end
+      if units.end < Unit::us
+        nanoseconds += seconds * 1_000_000_000
+        nanoseconds += milliseconds * 1_000_000
+        nanoseconds += microseconds * 1_000
+        seconds = milliseconds = microseconds = 0
+      elsif units.end < Unit::ms
+        microseconds += seconds * 1_000_000
+        microseconds += milliseconds * 1_000
+        seconds = milliseconds = 0
+      elsif units.end < Unit::s
+        milliseconds += seconds * 1_000
+        seconds = 0
+      end
+      map = {
+        Unit::w => weeks,
+        Unit::d => days,
+        Unit::h => hours,
+        Unit::m => minutes,
+        Unit::s => seconds,
+        Unit::ms => milliseconds,
+        Unit::us => microseconds,
+        Unit::ns => nanoseconds
+      }
+      units_array = units.to_a.reverse
+      result = []
+      started = false
+      units_array.each do |u|
+        case u
+        when Unit::from(:s .. :h)
+          value = map[u]
+          next if value == 0 && (empty == OnEmpty::skip || (empty == OnEmpty::minor && !started))
+          started = true
+          item = case zeros
+          when OnZero::fill
+            Kernel::format '%02d', value
+          when OnZero::align
+            Kernel::format '%2d', value
+          else
+            Kernel::format '%d', value
+         end
+         result << item + u.to_s
+        when Unit::from(:ns .. :ms)
+          value = map[u]
+          next if value == 0 && (empty == OnEmpty::skip || (empty == OnEmpty::minor && !started))
+          started = true
+          item = case zeros
+          when OnZero::fill
+            Kernel::format '%03d', value
+          when OnZero::align
+            Kernel::format '%3d', value
+          else
+            Kernel::format '%d', value
+          end
+          result << item + u.to_s
+        else
+          value = map[u]
+          next if value == 0 && (empty == OnEmpty::skip || (empty == OnEmpty::minor && !started))
+          started = true
+          item = Kernel::format '%d', value
+          result << item + u.to_s
+        end
+      end
+      result = result.join(delim).strip
+      if sgn < 0
+        case minus
+        when Proc
+          result = minus[result]
+        when String
+          result = minus + delim + result
+        end
+      end
+      result
     end
 
     # @endgroup
@@ -96,7 +198,7 @@ module IS::Duration
 
     # @private
     def parse_string source
-      if source.nil? || source.empty? || source =~ /^(\d+(w|d|h|m|s|ms|us|ns)\s*)+$/
+      if source.nil? || source.empty? || source !~ /^(\d+(w|d|h|m|s|ms|us|ns)\s*)+$/
         raise ArgumentError, "Invalid source value: #{ source.inspect }", caller_locations 
       end
       multipliers = {
@@ -109,7 +211,7 @@ module IS::Duration
         'us' => 0.000001,
         'ns' => 0.000000001,
       }
-      matches = source.scan(/(\d+)(w|d|h|m|s|ms|us|ns)/)
+      matches = source.scan(/(\d+)(ms|us|ns|w|d|h|m|s)/)
       seconds = 0
       subseconds = 0.0
       has_subseconds = false
