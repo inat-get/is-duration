@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: IS::Duration
+  
+    &mdash; IS::Duration
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "IS::Duration";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (D)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../IS.html" title="IS (module)">IS</a></span></span>
+     &raquo; 
+    <span class="title">Duration</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Module: IS::Duration
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/is-duration/info.rb<span class="defines">,<br />
+  lib/is-duration.rb</span>
+</dd>
+  </dl>
+  
+</div>
+
+<h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Duration/OnEmpty.html" title="IS::Duration::OnEmpty (class)">OnEmpty</a></span>, <span class='object_link'><a href="Duration/OnMinus.html" title="IS::Duration::OnMinus (class)">OnMinus</a></span>, <span class='object_link'><a href="Duration/OnZero.html" title="IS::Duration::OnZero (class)">OnZero</a></span>, <span class='object_link'><a href="Duration/Unit.html" title="IS::Duration::Unit (class)">Unit</a></span>
+    
+  
+</p>
+
+
+
+
+
+
+
+  
+    <h2>
+      Singleton Interface
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#format-class_method" title="format (class method)">.<strong>format</strong>(value, **opts)  &#x21d2; String<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse-class_method" title="parse (class method)">.<strong>parse</strong>(source)  &#x21d2; Numeric<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Include Interface
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#format_duration-instance_method" title="#format_duration (instance method)">#<strong>format_duration</strong>(value, **opts)  &#x21d2; String<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#parse_duration-instance_method" title="#parse_duration (instance method)">#<strong>parse_duration</strong>(source)  &#x21d2; Numeric<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="format-class_method">
+  
+    .<strong>format</strong>(value, **opts)  &#x21d2; <tt>String</tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt>Numeric</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p><code>Integer</code> or <code>Float</code>, <code>Rational</code> will be converted to <code>Float</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>opts</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>**opts</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">units</span>
+          <span class="type">(<tt>Range&lt;<span class='object_link'><a href="Duration/Unit.html" title="IS::Duration::Unit (class)">Unit</a></span>|Symbol&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p><em>default:</em> <tt>(Unit.s .. Unit.d)</tt></p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">empty</span>
+          <span class="type">(<tt><span class='object_link'><a href="Duration/OnEmpty.html" title="IS::Duration::OnEmpty (class)">OnEmpty</a></span>|Symbol</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p><em>default:</em> <code>OnEmpty.skip</code></p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">zeros</span>
+          <span class="type">(<tt><span class='object_link'><a href="Duration/OnZero.html" title="IS::Duration::OnZero (class)">OnZero</a></span>|Symbol</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p><em>default:</em> <code>OnZero.single</code></p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">delim</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p><tt>“”</tt> (empty string), <tt>“ ”</tt> (space) or other, <em>default:</em> <tt>“”</tt></p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">minus</span>
+          <span class="type">(<tt><span class='object_link'><a href="Duration/OnMinus.html" title="IS::Duration::OnMinus (class)">OnMinus</a></span>|Symbol|String|Proc</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p><em>default:</em> <code>OnMinus.ignore</code></p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/is-duration.rb', line 72</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_format'>format</span> <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_opts'>opts</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span> <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Rational</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid source value: </span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span> <span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caller_locations'>caller_locations</span> <span class='kw'>unless</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Integer</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Float</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_units'>units</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Duration/Unit.html" title="IS::Duration::Unit (class)">Unit</a></span></span><span class='op'>::</span><span class='id identifier rubyid_from'>from</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:units</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='lparen'>(</span><span class='symbol'>:s</span> <span class='op'>..</span> <span class='symbol'>:d</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_empty'>empty</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Duration/OnEmpty.html" title="IS::Duration::OnEmpty (class)">OnEmpty</a></span></span><span class='op'>::</span><span class='id identifier rubyid_from'>from</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:empty</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='symbol'>:skip</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_zeros'>zeros</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Duration/OnZero.html" title="IS::Duration::OnZero (class)">OnZero</a></span></span><span class='op'>::</span><span class='id identifier rubyid_from'>from</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:zeros</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='symbol'>:single</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_delim'>delim</span> <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:delim</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_minus'>minus</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:minus</span><span class='rbracket'>]</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Duration/OnMinus.html" title="IS::Duration::OnMinus (class)">OnMinus</a></span></span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='const'>Proc</span>
+    <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:minus</span><span class='rbracket'>]</span>
+  <span class='kw'>when</span> <span class='const'>Symbol</span>
+    <span class='const'><span class='object_link'><a href="Duration/OnMinus.html" title="IS::Duration::OnMinus (class)">OnMinus</a></span></span><span class='lbracket'>[</span><span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:minus</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
+  <span class='kw'>when</span> <span class='kw'>nil</span>
+    <span class='const'><span class='object_link'><a href="Duration/OnMinus.html" title="IS::Duration::OnMinus (class)">OnMinus</a></span></span><span class='period'>.</span><span class='id identifier rubyid_ignore'>ignore</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid option &#39;minus&#39;: </span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_opts'>opts</span><span class='period'>.</span><span class='id identifier rubyid_minus'>minus</span> <span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caller_locations'>caller_locations</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_sgn'>sgn</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>&lt;=&gt;</span> <span class='int'>0</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid source value: </span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span> <span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caller_locations'>caller_locations</span> <span class='kw'>if</span> <span class='id identifier rubyid_sgn'>sgn</span> <span class='op'>&lt;</span> <span class='int'>0</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_minus'>minus</span> <span class='op'>==</span> <span class='const'><span class='object_link'><a href="Duration/OnMinus.html" title="IS::Duration::OnMinus (class)">OnMinus</a></span></span><span class='op'>::</span><span class='id identifier rubyid_error'>error</span>
+  <span class='id identifier rubyid_abs'>abs</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_abs'>abs</span>
+  <span class='id identifier rubyid_int'>int</span><span class='comma'>,</span> <span class='id identifier rubyid_frac'>frac</span> <span class='op'>=</span> <span class='id identifier rubyid_abs'>abs</span><span class='period'>.</span><span class='id identifier rubyid_divmod'>divmod</span> <span class='int'>1</span>
+  <span class='id identifier rubyid_weeks'>weeks</span> <span class='op'>=</span> <span class='id identifier rubyid_days'>days</span> <span class='op'>=</span> <span class='id identifier rubyid_hours'>hours</span> <span class='op'>=</span> <span class='id identifier rubyid_minutes'>minutes</span> <span class='op'>=</span> <span class='id identifier rubyid_seconds'>seconds</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_units'>units</span><span class='period'>.</span><span class='id identifier rubyid_end'>end</span> <span class='op'>&gt;</span> <span class='const'><span class='object_link'><a href="Duration/Unit.html" title="IS::Duration::Unit (class)">Unit</a></span></span><span class='op'>::</span><span class='id identifier rubyid_s'>s</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_int'>int</span> <span class='op'>&gt;</span> <span class='int'>60</span>
+    <span class='id identifier rubyid_min'>min</span><span class='comma'>,</span> <span class='id identifier rubyid_seconds'>seconds</span> <span class='op'>=</span> <span class='id identifier rubyid_int'>int</span><span class='period'>.</span><span class='id identifier rubyid_divmod'>divmod</span> <span class='int'>60</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_units'>units</span><span class='period'>.</span><span class='id identifier rubyid_end'>end</span> <span class='op'>&gt;</span> <span class='const'><span class='object_link'><a href="Duration/Unit.html" title="IS::Duration::Unit (class)">Unit</a></span></span><span class='op'>::</span><span class='id identifier rubyid_m'>m</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_min'>min</span> <span class='op'>&gt;</span> <span class='int'>60</span>
+      <span class='id identifier rubyid_hrs'>hrs</span><span class='comma'>,</span> <span class='id identifier rubyid_minutes'>minutes</span> <span class='op'>=</span> <span class='id identifier rubyid_min'>min</span><span class='period'>.</span><span class='id identifier rubyid_divmod'>divmod</span> <span class='int'>60</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_units'>units</span><span class='period'>.</span><span class='id identifier rubyid_end'>end</span> <span class='op'>&gt;</span> <span class='const'><span class='object_link'><a href="Duration/Unit.html" title="IS::Duration::Unit (class)">Unit</a></span></span><span class='op'>::</span><span class='id identifier rubyid_h'>h</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_hrs'>hrs</span> <span class='op'>&gt;</span> <span class='int'>24</span>
+        <span class='id identifier rubyid_dys'>dys</span><span class='comma'>,</span> <span class='id identifier rubyid_hours'>hours</span> <span class='op'>=</span> <span class='id identifier rubyid_hrs'>hrs</span><span class='period'>.</span><span class='id identifier rubyid_divmod'>divmod</span> <span class='int'>24</span>
+        <span class='kw'>if</span> <span class='id identifier rubyid_units'>units</span><span class='period'>.</span><span class='id identifier rubyid_end'>end</span> <span class='op'>&gt;</span> <span class='const'><span class='object_link'><a href="Duration/Unit.html" title="IS::Duration::Unit (class)">Unit</a></span></span><span class='op'>::</span><span class='id identifier rubyid_d'>d</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_dys'>dys</span> <span class='op'>&gt;</span> <span class='int'>7</span>
+          <span class='id identifier rubyid_weeks'>weeks</span><span class='comma'>,</span> <span class='id identifier rubyid_days'>days</span> <span class='op'>=</span> <span class='id identifier rubyid_dys'>dys</span><span class='period'>.</span><span class='id identifier rubyid_divmod'>divmod</span> <span class='int'>7</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_days'>days</span> <span class='op'>=</span> <span class='id identifier rubyid_dys'>dys</span>
+        <span class='kw'>end</span>
+      <span class='kw'>else</span>
+        <span class='id identifier rubyid_hours'>hours</span> <span class='op'>=</span> <span class='id identifier rubyid_hrs'>hrs</span>
+      <span class='kw'>end</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_minutes'>minutes</span> <span class='op'>=</span> <span class='id identifier rubyid_min'>min</span>
+    <span class='kw'>end</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_seconds'>seconds</span> <span class='op'>=</span> <span class='id identifier rubyid_int'>int</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_nanoseconds'>nanoseconds</span> <span class='op'>=</span> <span class='id identifier rubyid_microseconds'>microseconds</span> <span class='op'>=</span> <span class='id identifier rubyid_milliseconds'>milliseconds</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_units'>units</span><span class='period'>.</span><span class='id identifier rubyid_begin'>begin</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="Duration/Unit.html" title="IS::Duration::Unit (class)">Unit</a></span></span><span class='op'>::</span><span class='id identifier rubyid_s'>s</span>
+    <span class='id identifier rubyid_str_frac'>str_frac</span> <span class='op'>=</span> <span class='const'>Kernel</span><span class='op'>::</span><span class='id identifier rubyid_format'>format</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%.9f</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_frac'>frac</span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='op'>-</span><span class='int'>9</span><span class='op'>..</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_str_ms'>str_ms</span><span class='comma'>,</span> <span class='id identifier rubyid_str_us'>str_us</span><span class='comma'>,</span> <span class='id identifier rubyid_str_ns'>str_ns</span> <span class='op'>=</span> <span class='id identifier rubyid_str_frac'>str_frac</span><span class='lbracket'>[</span><span class='int'>0</span><span class='comma'>,</span> <span class='int'>3</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_str_frac'>str_frac</span><span class='lbracket'>[</span><span class='int'>3</span><span class='comma'>,</span> <span class='int'>3</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_str_frac'>str_frac</span><span class='lbracket'>[</span><span class='int'>6</span><span class='comma'>,</span> <span class='int'>3</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_milliseconds'>milliseconds</span><span class='comma'>,</span> <span class='id identifier rubyid_microseconds'>microseconds</span><span class='comma'>,</span> <span class='id identifier rubyid_nanoseconds'>nanoseconds</span> <span class='op'>=</span> <span class='id identifier rubyid_str_ms'>str_ms</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='comma'>,</span> <span class='id identifier rubyid_str_us'>str_us</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='comma'>,</span> <span class='id identifier rubyid_str_ns'>str_ns</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+  <span class='kw'>end</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_units'>units</span><span class='period'>.</span><span class='id identifier rubyid_end'>end</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="Duration/Unit.html" title="IS::Duration::Unit (class)">Unit</a></span></span><span class='op'>::</span><span class='id identifier rubyid_us'>us</span>
+    <span class='id identifier rubyid_nanoseconds'>nanoseconds</span> <span class='op'>+=</span> <span class='id identifier rubyid_seconds'>seconds</span> <span class='op'>*</span> <span class='int'>1_000_000_000</span>
+    <span class='id identifier rubyid_nanoseconds'>nanoseconds</span> <span class='op'>+=</span> <span class='id identifier rubyid_milliseconds'>milliseconds</span> <span class='op'>*</span> <span class='int'>1_000_000</span>
+    <span class='id identifier rubyid_nanoseconds'>nanoseconds</span> <span class='op'>+=</span> <span class='id identifier rubyid_microseconds'>microseconds</span> <span class='op'>*</span> <span class='int'>1_000</span>
+    <span class='id identifier rubyid_seconds'>seconds</span> <span class='op'>=</span> <span class='id identifier rubyid_milliseconds'>milliseconds</span> <span class='op'>=</span> <span class='id identifier rubyid_microseconds'>microseconds</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_units'>units</span><span class='period'>.</span><span class='id identifier rubyid_end'>end</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="Duration/Unit.html" title="IS::Duration::Unit (class)">Unit</a></span></span><span class='op'>::</span><span class='id identifier rubyid_ms'>ms</span>
+    <span class='id identifier rubyid_microseconds'>microseconds</span> <span class='op'>+=</span> <span class='id identifier rubyid_seconds'>seconds</span> <span class='op'>*</span> <span class='int'>1_000_000</span>
+    <span class='id identifier rubyid_microseconds'>microseconds</span> <span class='op'>+=</span> <span class='id identifier rubyid_milliseconds'>milliseconds</span> <span class='op'>*</span> <span class='int'>1_000</span>
+    <span class='id identifier rubyid_seconds'>seconds</span> <span class='op'>=</span> <span class='id identifier rubyid_milliseconds'>milliseconds</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_units'>units</span><span class='period'>.</span><span class='id identifier rubyid_end'>end</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="Duration/Unit.html" title="IS::Duration::Unit (class)">Unit</a></span></span><span class='op'>::</span><span class='id identifier rubyid_s'>s</span>
+    <span class='id identifier rubyid_milliseconds'>milliseconds</span> <span class='op'>+=</span> <span class='id identifier rubyid_seconds'>seconds</span> <span class='op'>*</span> <span class='int'>1_000</span>
+    <span class='id identifier rubyid_seconds'>seconds</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_map'>map</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+    <span class='const'><span class='object_link'><a href="Duration/Unit.html" title="IS::Duration::Unit (class)">Unit</a></span></span><span class='op'>::</span><span class='id identifier rubyid_w'>w</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_weeks'>weeks</span><span class='comma'>,</span>
+    <span class='const'><span class='object_link'><a href="Duration/Unit.html" title="IS::Duration::Unit (class)">Unit</a></span></span><span class='op'>::</span><span class='id identifier rubyid_d'>d</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_days'>days</span><span class='comma'>,</span>
+    <span class='const'><span class='object_link'><a href="Duration/Unit.html" title="IS::Duration::Unit (class)">Unit</a></span></span><span class='op'>::</span><span class='id identifier rubyid_h'>h</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_hours'>hours</span><span class='comma'>,</span>
+    <span class='const'><span class='object_link'><a href="Duration/Unit.html" title="IS::Duration::Unit (class)">Unit</a></span></span><span class='op'>::</span><span class='id identifier rubyid_m'>m</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_minutes'>minutes</span><span class='comma'>,</span>
+    <span class='const'><span class='object_link'><a href="Duration/Unit.html" title="IS::Duration::Unit (class)">Unit</a></span></span><span class='op'>::</span><span class='id identifier rubyid_s'>s</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_seconds'>seconds</span><span class='comma'>,</span>
+    <span class='const'><span class='object_link'><a href="Duration/Unit.html" title="IS::Duration::Unit (class)">Unit</a></span></span><span class='op'>::</span><span class='id identifier rubyid_ms'>ms</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_milliseconds'>milliseconds</span><span class='comma'>,</span>
+    <span class='const'><span class='object_link'><a href="Duration/Unit.html" title="IS::Duration::Unit (class)">Unit</a></span></span><span class='op'>::</span><span class='id identifier rubyid_us'>us</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_microseconds'>microseconds</span><span class='comma'>,</span>
+    <span class='const'><span class='object_link'><a href="Duration/Unit.html" title="IS::Duration::Unit (class)">Unit</a></span></span><span class='op'>::</span><span class='id identifier rubyid_ns'>ns</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_nanoseconds'>nanoseconds</span>
+  <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_units_array'>units_array</span> <span class='op'>=</span> <span class='id identifier rubyid_units'>units</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span><span class='period'>.</span><span class='id identifier rubyid_reverse'>reverse</span>
+  <span class='id identifier rubyid_fmt2'>fmt2</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_zeros'>zeros</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Duration/OnZero.html" title="IS::Duration::OnZero (class)">OnZero</a></span></span><span class='op'>::</span><span class='id identifier rubyid_fill'>fill</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%02d</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Duration/OnZero.html" title="IS::Duration::OnZero (class)">OnZero</a></span></span><span class='op'>::</span><span class='id identifier rubyid_align'>align</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%2d</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>else</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%d</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_fmt3'>fmt3</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_zeros'>zeros</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Duration/OnZero.html" title="IS::Duration::OnZero (class)">OnZero</a></span></span><span class='op'>::</span><span class='id identifier rubyid_fill'>fill</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%03d</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Duration/OnZero.html" title="IS::Duration::OnZero (class)">OnZero</a></span></span><span class='op'>::</span><span class='id identifier rubyid_align'>align</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%2d</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>else</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%d</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_started'>started</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='id identifier rubyid_units_array'>units_array</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_u'>u</span><span class='op'>|</span>
+    <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='id identifier rubyid_map'>map</span><span class='lbracket'>[</span><span class='id identifier rubyid_u'>u</span><span class='rbracket'>]</span>
+    <span class='kw'>next</span> <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>==</span> <span class='int'>0</span> <span class='op'>&amp;&amp;</span> <span class='lparen'>(</span><span class='id identifier rubyid_empty'>empty</span> <span class='op'>==</span> <span class='const'><span class='object_link'><a href="Duration/OnEmpty.html" title="IS::Duration::OnEmpty (class)">OnEmpty</a></span></span><span class='op'>::</span><span class='id identifier rubyid_skip'>skip</span> <span class='op'>||</span> <span class='lparen'>(</span><span class='id identifier rubyid_empty'>empty</span> <span class='op'>==</span> <span class='const'><span class='object_link'><a href="Duration/OnEmpty.html" title="IS::Duration::OnEmpty (class)">OnEmpty</a></span></span><span class='op'>::</span><span class='id identifier rubyid_minor'>minor</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_started'>started</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_started'>started</span> <span class='op'>=</span> <span class='kw'>true</span>
+    <span class='id identifier rubyid_item'>item</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_u'>u</span>
+    <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Duration/Unit.html" title="IS::Duration::Unit (class)">Unit</a></span></span><span class='op'>::</span><span class='id identifier rubyid_from'>from</span><span class='lparen'>(</span><span class='symbol'>:s</span> <span class='op'>..</span> <span class='symbol'>:h</span><span class='rparen'>)</span>
+      <span class='const'>Kernel</span><span class='op'>::</span><span class='id identifier rubyid_format'>format</span> <span class='id identifier rubyid_fmt2'>fmt2</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span>
+    <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Duration/Unit.html" title="IS::Duration::Unit (class)">Unit</a></span></span><span class='op'>::</span><span class='id identifier rubyid_from'>from</span><span class='lparen'>(</span><span class='symbol'>:ns</span> <span class='op'>..</span> <span class='symbol'>:ms</span><span class='rparen'>)</span>
+      <span class='const'>Kernel</span><span class='op'>::</span><span class='id identifier rubyid_format'>format</span> <span class='id identifier rubyid_fmt3'>fmt3</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span>
+    <span class='kw'>else</span>
+      <span class='const'>Kernel</span><span class='op'>::</span><span class='id identifier rubyid_format'>format</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%d</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_result'>result</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_item'>item</span> <span class='op'>+</span> <span class='id identifier rubyid_u'>u</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_delim'>delim</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_strip'>strip</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_sgn'>sgn</span> <span class='op'>&lt;</span> <span class='int'>0</span>
+    <span class='kw'>case</span> <span class='id identifier rubyid_minus'>minus</span>
+    <span class='kw'>when</span> <span class='const'>Proc</span>
+      <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_minus'>minus</span><span class='lbracket'>[</span><span class='id identifier rubyid_result'>result</span><span class='rbracket'>]</span>
+    <span class='kw'>when</span> <span class='const'>String</span>
+      <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_minus'>minus</span> <span class='op'>+</span> <span class='id identifier rubyid_delim'>delim</span> <span class='op'>+</span> <span class='id identifier rubyid_result'>result</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_result'>result</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse-class_method">
+  
+    .<strong>parse</strong>(source)  &#x21d2; <tt>Numeric</tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>source</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Numeric</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/is-duration.rb', line 43</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse'>parse</span> <span class='id identifier rubyid_source'>source</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_source'>source</span>
+  <span class='kw'>when</span> <span class='kw'>nil</span>
+    <span class='kw'>nil</span>
+  <span class='kw'>when</span> <span class='const'>Integer</span><span class='comma'>,</span> <span class='const'>Float</span>
+    <span class='id identifier rubyid_source'>source</span>
+  <span class='kw'>when</span> <span class='const'>Rational</span>
+    <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^\d+$</span><span class='regexp_end'>/</span></span>
+    <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^\d*\.\d*$</span><span class='regexp_end'>/</span></span>
+    <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^(\d+(w|d|h|m|s|ms|us|ns)\s*)+$</span><span class='regexp_end'>/</span></span>
+    <span class='id identifier rubyid_parse_string'>parse_string</span> <span class='id identifier rubyid_source'>source</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid source value: </span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span> <span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caller_locations'>caller_locations</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="format_duration-instance_method">
+  
+    #<strong>format_duration</strong>(value, **opts)  &#x21d2; <tt>String</tt><sup>?</sup>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#format-class_method" title="IS::Duration.format (method)">format</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+240
+241
+242</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/is-duration.rb', line 240</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_format_duration'>format_duration</span> <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_opts'>opts</span>
+  <span class='const'><span class='object_link'><a href="../IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="#format-class_method" title="IS::Duration.format (method)">format</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse_duration-instance_method">
+  
+    #<strong>parse_duration</strong>(source)  &#x21d2; <tt>Numeric</tt><sup>?</sup>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>source</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Numeric</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#parse-class_method" title="IS::Duration.parse (method)">parse</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+236</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/is-duration.rb', line 236</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse_duration'>parse_duration</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='rparen'>)</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../IS.html" title="IS (module)">IS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="IS::Duration (module)">Duration</a></span></span><span class='period'>.</span><span class='id identifier rubyid_parse'><span class='object_link'><a href="#parse-class_method" title="IS::Duration.parse (method)">parse</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='rparen'>)</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Wed Feb 11 03:19:21 2026 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.38 (ruby-3.4.8).
+</div>
+
+    </div>
+  </body>
+</html>
